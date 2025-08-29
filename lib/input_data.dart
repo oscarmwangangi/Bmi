@@ -19,9 +19,9 @@ enum Gender {
 }
 class _InputPageState extends State<InputPage> {
 
-  late Gender selectedGender;
+   Gender? selectedGender;
 
-    @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -34,25 +34,25 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusableCard(color: selectedGender == Gender.male ? activeCardColor : inactiveCardColor,
-                cardChild: iconContent(
-                  icon: FontAwesomeIcons.mars,
-                  lable: 'Male',
-                ), onPress: () {
-                    setState(() {
-                      selectedGender = Gender.male;
-                    });
+                    cardChild: iconContent(
+                      icon: FontAwesomeIcons.mars,
+                      lable: 'Male',
+                    ), onPress: () {
+                      setState(() {
+                        selectedGender = Gender.male;
+                      });
                     },),),
                 Expanded(
-                      child: ReusableCard(color: selectedGender == Gender.female ? activeCardColor : inactiveCardColor,
-                                        cardChild: iconContent(
+                  child: ReusableCard(color: selectedGender == Gender.female ? activeCardColor : inactiveCardColor,
+                    cardChild: iconContent(
                       icon: FontAwesomeIcons.venus,
                       lable: 'Female',
-                                        ), onPress: () {
-                        setState(() {
-                          selectedGender = Gender.female;
-                        });
-                        },),
-                    )
+                    ), onPress: () {
+                      setState(() {
+                        selectedGender = Gender.female;
+                      });
+                    },),
+                )
               ],
             )
             ),
@@ -75,4 +75,3 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
-

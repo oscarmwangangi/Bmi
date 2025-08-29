@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const lableTextStyle = TextStyle(fontSize: 80.0, color: Color(0xFF8D8E98));
+const lableTextStyle = TextStyle(fontSize: 20.0, color: Color(0xFF8D8E98));
 
 class iconContent extends StatelessWidget {
 
@@ -19,7 +19,7 @@ class iconContent extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Icon(icon,
-          size:80.0,
+          size:40.0,
         ),
 
         SizedBox(height: 15.0),

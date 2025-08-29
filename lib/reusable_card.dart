@@ -3,34 +3,24 @@ import 'package:flutter/material.dart';
 import 'input_data.dart';
 
 class ReusableCard extends StatelessWidget {
+  final Color color;
+  final Widget? cardChild;
+  final VoidCallback? onPress; // optional callback
 
-
-  final Color color; // property to pass in
-  final Widget? cardChild ;
-  final VoidCallback? onPress;
-
-
-  const ReusableCard({
-    Key? key,
-    required this.color, // mark as required
-    this.cardChild,
-    this.onPress,
-  }) : super(key: key);
+  ReusableCard({required this.color, this.cardChild, this.onPress});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPress,
+      onTap: onPress, // this is what makes it clickable
       child: Container(
-
-      child: cardChild,
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(19.0),
-        color: Color(expandedWidgetColor),
+        child: cardChild,
+        margin: EdgeInsets.all(15.0),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(10.0),
+        ),
       ),
-
-    ));
-
+    );
   }
 }
