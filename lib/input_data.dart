@@ -17,6 +17,8 @@ enum Gender {
 }
 
 int height = 180;
+int weight = 60;
+int age = 20;
 
 class _InputPageState extends State<InputPage> {
 
@@ -99,8 +101,82 @@ class _InputPageState extends State<InputPage> {
             )),
             Expanded(child:Row(
                 children: [
-                  Expanded(child: ReusableCard(color: const Color(kExpandedWidgetColor))),
-                  Expanded(child: ReusableCard(color: const Color(kExpandedWidgetColor))),
+                  Expanded(child: ReusableCard(
+                    color: const Color(kExpandedWidgetColor),
+                   cardChild: Column(
+                     mainAxisAlignment: MainAxisAlignment.center,
+                     children: [
+                       Text('Weight', style: kLableTextStyle),
+                       Text(weight.toString(),style: kNumberTextStyle,),
+                       Row(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                         children: [
+                           RoundIconButton(
+                             icon: FontAwesomeIcons.minus,
+                             onpressed: (){
+                               setState(() {
+                                 weight --;
+
+                               });
+                             },
+
+                           ),
+                           SizedBox(width: 10.0,),
+                           RoundIconButton(
+                             icon: FontAwesomeIcons.plus,
+                             onpressed: (){
+                               setState(() {
+                                 weight++;
+                               });
+                             },
+                           ),
+
+    ]
+
+                       )
+
+                     ],
+                   ),
+                  )),
+                  Expanded(
+                      child: ReusableCard(
+                        color: const Color(kExpandedWidgetColor),
+                        cardChild: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Age', style: kLableTextStyle),
+                            Text(age.toString(),style: kNumberTextStyle,),
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  RoundIconButton(
+                                    icon: FontAwesomeIcons.minus,
+                                    onpressed: (){
+                                      setState(() {
+                                        age --;
+
+                                      });
+                                    },
+
+                                  ),
+                                  SizedBox(width: 10.0,),
+                                  RoundIconButton(
+                                    icon: FontAwesomeIcons.plus,
+                                    onpressed: (){
+                                      setState(() {
+                                        age++;
+                                      });
+                                    },
+                                  ),
+
+                                ]
+
+                            )
+
+                          ],
+                        ),
+                      )
+                      ),
                 ]
             )
             ),
@@ -109,9 +185,31 @@ class _InputPageState extends State<InputPage> {
               margin: EdgeInsets.only(top: 10.0),
               width: double.infinity,
               height: kBottomContainerHeight,
-            )
+             )
           ],
         )
+    );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+
+  // const ({super.key});
+  RoundIconButton({this.icon, required this.onpressed});
+
+  final IconData? icon;
+  final VoidCallback onpressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      child: Icon(icon),
+    onPressed: onpressed,
+    constraints: const BoxConstraints.tightFor(width: 56.0, height: 56.0),
+
+    elevation: 6.0,
+    shape: const CircleBorder(),
+  fillColor: Color(0xFF4C4F5E),
     );
   }
 }
