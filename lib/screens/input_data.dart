@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'icon_content.dart';
-import 'reusable_card.dart';
+import '../calculate_brain.dart';
+import '../components/icon_content.dart';
+import '../components/reusable_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'constants.dart';
-
+import '../constants.dart';
+import 'result_page.dart';
+import '../components/bottom_button.dart';
 class InputPage extends StatefulWidget {
 
   @override
@@ -180,17 +182,25 @@ class _InputPageState extends State<InputPage> {
                 ]
             )
             ),
-            Container(
-              color: kBottomContainerColor,
-              margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: kBottomContainerHeight,
-             )
+            BottonButton(onTap: () {
+              calculatorBMI calc = calculatorBMI(height: height,weight: weight);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ResultPage(
+                  ResultInterpretation: calc.getInterpretation(),
+                  ResultText: calc.getResult(),
+                  BmiResult: calc.CalculateBMI(),
+                )),
+
+              );
+            }, bottomTitle: 'CALCULATE',)
           ],
         )
     );
   }
 }
+
+
 
 class RoundIconButton extends StatelessWidget {
 

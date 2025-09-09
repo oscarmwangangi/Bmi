@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'input_data.dart';
+import '../screens/input_data.dart';
 
 class ReusableCard extends StatelessWidget {
   final Color color;
